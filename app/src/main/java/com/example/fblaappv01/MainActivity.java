@@ -9,10 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
+
+    //private WebView webView; //sets up a private webview variable
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +37,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle); //then we take our drawer variable and call a drawer listener and pass this toggle variable
         toggle.syncState(); //then we call syncstate to take care of rotating our hamburger icon to get rid of the drawer itself
 
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsFragment()).commit(); //paste herre so that when we start our activity we open our message fragment immediately
             navigationView.setCheckedItem(R.id.nav_news);
         }
 
+        //webView = (WebView) findViewById(R.id.webview); //initializes webview for FBLA News
+        //webView.setWebViewClient(new WebViewClient()); //opens the url INSIDE the app instead of opening it outside the app
+        //webView.loadUrl("http://www.google.com"); //loads FBLA News
 
 
     }
+
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
