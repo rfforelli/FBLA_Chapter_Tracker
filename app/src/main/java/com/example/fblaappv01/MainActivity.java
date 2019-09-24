@@ -1,17 +1,16 @@
 package com.example.fblaappv01;
 
-import android.graphics.drawable.ColorDrawable;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setCheckedItem(R.id.nav_news);
         }
 
+
         //getActionBar().setTitle("Test");
         //getActionBar().setBackgroundDrawable(new ColorDrawable(3));
 
@@ -55,6 +55,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+
+    @Override
+    public void onBackPressed() { //calls the previous web history item upon the user pressing the back button
+
+        WebView webView = findViewById(R.id.webView);
+        if (webView.canGoBack()) {
+            webView.goBack();
+        } else {
+            super.onBackPressed();
+        }
+    }
 
 
     @Override
@@ -80,6 +91,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_share:
                 Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show(); //this si to simply see that we clicked this item, its the toast message
+                try { //try/catch block to prompt the user to share the app
+                    Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                    shareIntent.setType("text/plain");
+                    shareIntent.putExtra(Intent.EXTRA_SUBJECT, "FBLA App!");
+                    String shareMessage = "\nCheck out FBLA App! I'm loving it so far!\n\n";
+                    shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID + "\n\n";
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+                    startActivity(Intent.createChooser(shareIntent, "Thanks for sharing!!!"));
+                } catch (Exception e) {
+                    //e.toString();
+                }
                 break;
 
         }
