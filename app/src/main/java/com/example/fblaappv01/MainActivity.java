@@ -1,5 +1,6 @@
 package com.example.fblaappv01;
 
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,8 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+
     private DrawerLayout drawer;
 
     //private WebView webView; //sets up a private webview variable
@@ -41,6 +44,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsFragment()).commit(); //paste herre so that when we start our activity we open our message fragment immediately
             navigationView.setCheckedItem(R.id.nav_news);
         }
+
+        //getActionBar().setTitle("Test");
+        //getActionBar().setBackgroundDrawable(new ColorDrawable(3));
 
         //webView = (WebView) findViewById(R.id.webview); //initializes webview for FBLA News
         //webView.setWebViewClient(new WebViewClient()); //opens the url INSIDE the app instead of opening it outside the app
@@ -82,12 +88,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) { //if our drawer variable is open
-            drawer.closeDrawer(GravityCompat.START); //then close it
-        } else { //otherwise
-            super.onBackPressed(); //close the activity as usual
-        }
-    }
+
 }
