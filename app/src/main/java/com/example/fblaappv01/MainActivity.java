@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle); //then we take our drawer variable and call a drawer listener and pass this toggle variable
         toggle.syncState(); //then we call syncstate to take care of rotating our hamburger icon to get rid of the drawer itself
 
+
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsFragment()).commit(); //paste herre so that when we start our activity we open our message fragment immediately
             navigationView.setCheckedItem(R.id.nav_news);
@@ -103,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     //e.toString();
                 }
                 break;
-
         }
 
         drawer.closeDrawer(GravityCompat.START);

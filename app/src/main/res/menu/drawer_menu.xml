@@ -21,17 +21,17 @@
             android:icon="@drawable/ic_competitive_events"
             android:title="Competitve Events" />
         <item
-            android:id="@+id/nav_contact"
-            android:icon="@drawable/ic_contact_us"
-            android:title="Contact Us" />
-        <item
             android:id="@+id/nav_meeting"
             android:icon="@drawable/ic_track_meetings"
             android:title="Chapter Meetings" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Communication">
         <menu>
+            <item
+                android:id="@+id/nav_contact"
+                android:icon="@drawable/ic_contact_us"
+                android:title="Contact Us" />
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_share"
