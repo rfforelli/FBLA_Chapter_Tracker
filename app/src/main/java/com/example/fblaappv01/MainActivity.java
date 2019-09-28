@@ -47,14 +47,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
 
-        //getActionBar().setTitle("Test");
-        //getActionBar().setBackgroundDrawable(new ColorDrawable(3));
-
-        //webView = (WebView) findViewById(R.id.webview); //initializes webview for FBLA News
-        //webView.setWebViewClient(new WebViewClient()); //opens the url INSIDE the app instead of opening it outside the app
-        //webView.loadUrl("http://www.google.com"); //loads FBLA News
-
-
     }
 
 
@@ -113,3 +105,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 }
+
+
