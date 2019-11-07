@@ -41,10 +41,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsFragment()).commit(); //paste herre so that when we start our activity we open our message fragment immediately
             navigationView.setCheckedItem(R.id.nav_news);
-        }
+    }
+
+        //FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        //fragmentTransaction.add(R.id.fragment_container, new MeetingsFragment());
+        //fragmentTransaction.commit();
+
 
 
     }

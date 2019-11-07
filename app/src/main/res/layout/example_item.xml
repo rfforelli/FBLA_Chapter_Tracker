@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="4dp">
+    app:cardCornerRadius="4dp"
+    android:layout_marginBottom="4dp">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -38,7 +40,8 @@
             android:layout_below="@+id/meetingTextView"
             android:layout_toEndOf="@id/meetingImageView"
             android:layout_marginStart="7dp"
-            android:id="@+id/meetingTextView2"/>
+            android:id="@+id/meetingTextView2" />
+
 
 
 
