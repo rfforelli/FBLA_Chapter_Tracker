@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
@@ -12,12 +13,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
 
 import com.example.fblaappv01.Utils.BottomNavigationViewHelper;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -94,36 +96,32 @@ public class MeetingsActivity extends AppCompatActivity {
             }
         });
 
-        /*@Override
-        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-            super.onActivityResult(requestCode, resultCode, data);
 
-            if (requestCode == ADD_MEETING_REQUEST && resultCode == RESULT_OK) {
-                String title = data.getStringExtra(AddMeetingActivity.EXTRA_TITLE);
-                String description = data.getStringExtra(AddMeetingActivity.EXTRA_DESCRIPTION);
-                String date = data.getStringExtra(AddMeetingActivity.EXTRA_DATE);
 
-                CreateNewMeeting createNewMeeting = new CreateNewMeeting(title, description, date);
-                createMeetingViewModel.insert(createNewMeeting);
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) { //Enables swiping right OR left to delete a note, can delete one if want only one
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
 
-                Toast.makeText(this, "Note saved", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Note not saved", Toast.LENGTH_SHORT).show();
+                return false;
             }
-        }*/
-
-        //setTitle("Log New Chapter Meeting");
 
 
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+                createMeetingViewModel.delete(adapter.getMeetingAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(MeetingsActivity.this, "Meeting Log Deleted", Toast.LENGTH_SHORT).show();
+
+            }
 
 
+        })
 
-
-
+                .attachToRecyclerView(recyclerView);
 
 
 
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -144,7 +142,25 @@ public class MeetingsActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.meetings_menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.delete_all_logs:
+                createMeetingViewModel.deleteAllMeetings();
+                Toast.makeText(this, "All Logs Deleted", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                    return super.onOptionsItemSelected(item);
+        }
+
+    }
 
     private void setupBottomNavigationView(){
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView"); //so in the log we know the code has made it this far and wont crash

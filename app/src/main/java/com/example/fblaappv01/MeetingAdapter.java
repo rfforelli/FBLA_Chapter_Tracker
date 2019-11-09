@@ -41,10 +41,17 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingH
         notifyDataSetChanged();
     }
 
+    public CreateNewMeeting getMeetingAt(int position){
+        return createNewMeetings.get(position);
+
+
+    }
+
     class MeetingHolder extends RecyclerView.ViewHolder {
         private TextView textViewTitle;
         private TextView textViewDescription;
         private TextView textViewDate;
+
 
 
         public MeetingHolder(@NonNull View itemView) {
@@ -55,5 +62,8 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingH
 
 
         }
+
+
     }
+
 }
