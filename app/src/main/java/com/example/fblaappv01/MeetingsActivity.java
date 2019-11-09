@@ -15,6 +15,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -38,11 +39,9 @@ public class MeetingsActivity extends AppCompatActivity {
     private Context mContext = MeetingsActivity.this;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        overridePendingTransition(0,0); //disables animation when transitioning from activity to activity
+        overridePendingTransition(0, 0); //disables animation when transitioning from activity to activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_meetings);
         Log.d(TAG, "onCreate: starting."); //tags it, lets developer know what activity im in
@@ -56,13 +55,8 @@ public class MeetingsActivity extends AppCompatActivity {
         setTitle("Chapter Meetings");
 
 
-
-
-
-
         //getActionBar().setHomeButtonEnabled(true);
         //getActionBar().setDisplayHomeAsUpEnabled(true);
-
 
 
         setupBottomNavigationView();
@@ -92,11 +86,8 @@ public class MeetingsActivity extends AppCompatActivity {
                 adapter.setCreateNewMeetings(createNewMeetings);
 
 
-
-
             }
         });
-
 
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) { //Enables swiping right OR left to delete a note, can delete one if want only one
@@ -130,10 +121,8 @@ public class MeetingsActivity extends AppCompatActivity {
                 startActivityForResult(intent, EDIT_MEETING_REQUEST);
 
 
-
             }
         });
-
 
 
     }
@@ -151,14 +140,23 @@ public class MeetingsActivity extends AppCompatActivity {
             CreateNewMeeting createNewMeeting = new CreateNewMeeting(title, description, date);
             createMeetingViewModel.insert(createNewMeeting);
 
-            Toast.makeText(this, "Meeting Logged", Toast.LENGTH_SHORT).show();
-        } else if (requestCode == EDIT_MEETING_REQUEST && resultCode == RESULT_OK){
+            Toast toast = Toast.makeText(MeetingsActivity.this,"Meeting Logged", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.BOTTOM, 0, 200);
+            toast.show();
+
+        } else if (requestCode == EDIT_MEETING_REQUEST && resultCode == RESULT_OK) {
             int id = data.getIntExtra(AddEditMeetingActivity.EXTRA_ID, -1);
 
-            if (id == -1){
-                Toast.makeText(this, "Meeting Log Can't Be Updated", Toast.LENGTH_SHORT).show();
+            if (id == -1) {
+                Toast toast = Toast.makeText(MeetingsActivity.this,"Meeting Log Can't Be Updated", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.BOTTOM, 0, 200);
+                toast.show();
                 return;
             }
+
+            Toast toast = Toast.makeText(MeetingsActivity.this,"Meeting Log Updated", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.BOTTOM, 0, 200);
+            toast.show();
 
             String title = data.getStringExtra(AddEditMeetingActivity.EXTRA_TITLE);
             String description = data.getStringExtra(AddEditMeetingActivity.EXTRA_DESCRIPTION);
@@ -168,10 +166,11 @@ public class MeetingsActivity extends AppCompatActivity {
             createNewMeeting.setId(id);
             createMeetingViewModel.update(createNewMeeting);
 
-            Toast.makeText(this, "Meeting Log Updated", Toast.LENGTH_SHORT).show();
 
         } else {
-            Toast.makeText(this, "Meeting Log Not Updated", Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(MeetingsActivity.this,"Meeting Log Not Updated", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.BOTTOM, 0, 200);
+            toast.show();
         }
     }
 
@@ -185,24 +184,23 @@ public class MeetingsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.delete_all_logs:
                 createMeetingViewModel.deleteAllMeetings();
                 Toast.makeText(this, "All Logs Deleted", Toast.LENGTH_SHORT).show();
                 return true;
             default:
-                    return super.onOptionsItemSelected(item);
+                return super.onOptionsItemSelected(item);
         }
 
     }
 
-    private void setupBottomNavigationView(){
+    private void setupBottomNavigationView() {
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView"); //so in the log we know the code has made it this far and wont crash
         BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setUpBottomNavigationView(bottomNavigationViewEx); //references helper so i dont have to update the nav view settings in each activities
 
         BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx);
-
 
 
         Menu menu = bottomNavigationViewEx.getMenu();
