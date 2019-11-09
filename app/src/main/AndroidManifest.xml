@@ -14,11 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MeetingsActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:launchMode="singleTop"></activity>
         <activity
             android:name=".AddMeetingActivity"
-            android:icon="@drawable/ic_close_black_24dp"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MeetingsActivity" />
         <activity
             android:name=".SplashScreen"
             android:theme="@style/SplashTheme">
