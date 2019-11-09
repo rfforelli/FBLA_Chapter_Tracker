@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button_add_meeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_black_24dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="60dp"/>
+
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar1"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+
+        />
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/relLayout2">
+            <!--   this is the relative layout for the main activity layout (4)   -->
+            <include layout="@layout/layout_center_viewpager"/>
+
+
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="55dp"
+                android:layout_marginBottom="50dp">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/meeting_item"
+
+
+
+
+
+
+            </android.support.v7.widget.RecyclerView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+
+        <include layout="@layout/layout_bottom_navigation_view"/>
+        <!--   include the bottom nav bar we created in the overall coordinator layout   -->
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+    <!--  make coordinator layout (3) (I made drawer, to make sure it works with my app)  -->
+</android.support.design.widget.CoordinatorLayout>
