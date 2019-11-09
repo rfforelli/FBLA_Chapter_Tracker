@@ -13,12 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddMeetingActivity"
+        <activity android:name=".MeetingsActivity"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".AddMeetingActivity"
             android:icon="@drawable/ic_close_black_24dp"
-            android:parentActivityName="com.example.fblaappv01.MainActivity"
-
-
-            />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SplashScreen"
             android:theme="@style/SplashTheme">

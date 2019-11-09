@@ -1,5 +1,6 @@
 package com.example.fblaappv01;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,11 +10,25 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.Toast;
 
+import com.example.fblaappv01.Utils.BottomNavigationViewHelper;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+
+
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static final String TAG = "MainActivity"; //for organizing logs
+    private static final int ACTIVITY_NUM = 0;
+
+    private Context mContext = MainActivity.this;
 
 
     private DrawerLayout drawer;
@@ -22,12 +37,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(0,0);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // to tell our app that we want to use our toolbar as our actionbar, because we removed the default actionbar
         Toolbar toolbar = findViewById(R.id.toolbar); //creates a toolbar variable that is linked to the toolbar we created
         setSupportActionBar(toolbar); //sets our toobar as our actionbar
+        Log.d(TAG, "onCreate: starting."); //tags it, lets developer know what activity im in
+
+        setupBottomNavigationView();
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -38,6 +57,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //then we pass the two string resources we created
         drawer.addDrawerListener(toggle); //then we take our drawer variable and call a drawer listener and pass this toggle variable
         toggle.syncState(); //then we call syncstate to take care of rotating our hamburger icon to get rid of the drawer itself
+
+        if (android.os.Build.VERSION.SDK_INT >= 21){
+            Window window = this.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
+        }
 
 
 
@@ -55,6 +81,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    private void setupBottomNavigationView(){
+        Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView"); //so in the log we know the code has made it this far and wont crash
+        BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
+        BottomNavigationViewHelper.setUpBottomNavigationView(bottomNavigationViewEx); //references helper so i dont have to update the nav view settings in each activities
+
+        BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx);
+
+        Menu menu = bottomNavigationViewEx.getMenu();
+        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
+        menuItem.setChecked(true);
+    }
+
+
 
     @Override
     public void onBackPressed() { //calls the previous web history item upon the user pressing the back button
@@ -71,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
+
             case R.id.nav_about: //define what we want to do when we click this item
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutFragment()).commit(); //takes care of placing our fragment in the fragment container frame layout
                 break;
@@ -85,9 +125,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_contact: //define what we want to do when we click this item
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ContactFragment()).commit(); //takes care of placing our fragment in the fragment container frame layout
-                break;
-            case R.id.nav_meeting: //define what we want to do when we click this item
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MeetingsFragment()).commit(); //takes care of placing our fragment in the fragment container frame layout
                 break;
             case R.id.nav_share:
                 Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show(); //this si to simply see that we clicked this item, its the toast message
