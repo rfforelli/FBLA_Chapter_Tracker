@@ -38,7 +38,7 @@ public class MeetingsFragment extends Fragment {
         buttonAddMeeting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AddMeetingActivity.class);
+                Intent intent = new Intent(getActivity(), AddEditMeetingActivity.class);
                 startActivity(intent);
             }
         });
@@ -69,9 +69,9 @@ public class MeetingsFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == ADD_MEETING_REQUEST && resultCode == RESULT_OK){
-            String title = data.getStringExtra(AddMeetingActivity.EXTRA_TITLE);
-            String description = data.getStringExtra(AddMeetingActivity.EXTRA_DESCRIPTION);
-            String date = data.getStringExtra(AddMeetingActivity.EXTRA_DATE);
+            String title = data.getStringExtra(AddEditMeetingActivity.EXTRA_TITLE);
+            String description = data.getStringExtra(AddEditMeetingActivity.EXTRA_DESCRIPTION);
+            String date = data.getStringExtra(AddEditMeetingActivity.EXTRA_DATE);
 
             CreateNewMeeting createNewMeeting = new CreateNewMeeting(title, description, date);
             createMeetingViewModel.insert(createNewMeeting);

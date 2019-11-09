@@ -14,6 +14,8 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingH
 
     private List<CreateNewMeeting> createNewMeetings = new ArrayList<>();
 
+    private OnitemClickListener listener;
+
     @NonNull
     @Override
     public MeetingHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -36,12 +38,12 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingH
         return createNewMeetings.size();
     }
 
-    public void setCreateNewMeetings(List<CreateNewMeeting> createNewMeetings){
+    public void setCreateNewMeetings(List<CreateNewMeeting> createNewMeetings) {
         this.createNewMeetings = createNewMeetings;
         notifyDataSetChanged();
     }
 
-    public CreateNewMeeting getMeetingAt(int position){
+    public CreateNewMeeting getMeetingAt(int position) {
         return createNewMeetings.get(position);
 
 
@@ -53,16 +55,34 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingH
         private TextView textViewDate;
 
 
-
         public MeetingHolder(@NonNull View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.text_view_title);
             textViewDescription = itemView.findViewById(R.id.tex_view_description);
             textViewDate = itemView.findViewById(R.id.tex_view_date);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(createNewMeetings.get(position));
+                    }
+                }
+            });
+
 
         }
 
+
+    }
+
+    public interface OnitemClickListener {
+        void onItemClick(CreateNewMeeting createNewMeeting); //for editing notes
+    }
+
+    public void setOnItemClickListener(OnitemClickListener listener) {
+        this.listener = listener;
 
     }
 

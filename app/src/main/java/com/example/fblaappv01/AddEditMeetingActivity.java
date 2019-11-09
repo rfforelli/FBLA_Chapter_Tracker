@@ -12,8 +12,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class AddMeetingActivity extends AppCompatActivity {
+public class AddEditMeetingActivity extends AppCompatActivity {
 
+    public static final String EXTRA_ID =
+            "com.example.fblaappv01.EXTRA_ID";
     public static final String EXTRA_TITLE =
             "com.example.fblaappv01.EXTRA_TITLE";
     public static final String EXTRA_DESCRIPTION =
@@ -43,6 +45,10 @@ public class AddMeetingActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
 
 
+        Intent intent = getIntent();
+
+
+
 
         //getActionBar().setHomeAsUpIndicator(R.drawable.ic_close_black_24dp);
         //getSupportActionBar().setTitle(Html.fromHtml("<font color='"+white+"'>"+"Home"+"</font>"));
@@ -57,6 +63,14 @@ public class AddMeetingActivity extends AppCompatActivity {
         editTextTitle = findViewById(R.id.edit_text_title);
         editTextDescription = findViewById(R.id.edit_text_description);
         editTextDate = findViewById(R.id.edit_text_date);
+        if (intent.hasExtra(EXTRA_ID)) {
+            setTitle("Edit Meeting Log");
+            editTextTitle.setText(intent.getStringExtra(EXTRA_TITLE));
+            editTextDescription.setText(intent.getStringExtra(EXTRA_DESCRIPTION));
+            editTextDate.setText(intent.getStringExtra(EXTRA_DATE));
+        } else{
+            setTitle("Log New Chapter Meeting");
+        }
 
 
         //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_black_24dp);
@@ -78,7 +92,6 @@ public class AddMeetingActivity extends AppCompatActivity {
 
 
 
-        setTitle("Log New Chapter Meeting");
 
 
 
@@ -116,6 +129,11 @@ public class AddMeetingActivity extends AppCompatActivity {
         data.putExtra(EXTRA_TITLE, title);
         data.putExtra(EXTRA_DESCRIPTION, description);
         data.putExtra(EXTRA_DATE, date);
+
+        int id = getIntent().getIntExtra(EXTRA_ID, -1);
+        if (id != -1){
+            data.putExtra(EXTRA_ID, id);
+        }
 
         setResult(RESULT_OK, data);
         finish();

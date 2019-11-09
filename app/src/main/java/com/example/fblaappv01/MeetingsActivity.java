@@ -28,6 +28,7 @@ import java.util.List;
 
 public class MeetingsActivity extends AppCompatActivity {
     public static final int ADD_MEETING_REQUEST = 1;
+    public static final int EDIT_MEETING_REQUEST = 2;
 
     private static final String TAG = "MainActivity"; //for organizing logs
     private static final int ACTIVITY_NUM = 0;
@@ -71,7 +72,7 @@ public class MeetingsActivity extends AppCompatActivity {
         buttonAddMeeting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MeetingsActivity.this, AddMeetingActivity.class); // GET APPLICATION CONTEXT IDK ANYMOOOOORE, nvm, I'm now able to change to meetingsactivity
+                Intent intent = new Intent(MeetingsActivity.this, AddEditMeetingActivity.class); // GET APPLICATION CONTEXT IDK ANYMOOOOORE, nvm, I'm now able to change to meetingsactivity
                 startActivityForResult(intent, ADD_MEETING_REQUEST);
             }
         });
@@ -118,6 +119,21 @@ public class MeetingsActivity extends AppCompatActivity {
 
                 .attachToRecyclerView(recyclerView);
 
+        adapter.setOnItemClickListener(new MeetingAdapter.OnitemClickListener() {
+            @Override
+            public void onItemClick(CreateNewMeeting createNewMeeting) {
+                Intent intent = new Intent(MeetingsActivity.this, AddEditMeetingActivity.class);
+                intent.putExtra(AddEditMeetingActivity.EXTRA_ID, createNewMeeting.getId());
+                intent.putExtra(AddEditMeetingActivity.EXTRA_TITLE, createNewMeeting.getTitle());
+                intent.putExtra(AddEditMeetingActivity.EXTRA_DESCRIPTION, createNewMeeting.getDescription());
+                intent.putExtra(AddEditMeetingActivity.EXTRA_DATE, createNewMeeting.getDate());
+                startActivityForResult(intent, EDIT_MEETING_REQUEST);
+
+
+
+            }
+        });
+
 
 
     }
@@ -128,16 +144,34 @@ public class MeetingsActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == ADD_MEETING_REQUEST && resultCode == RESULT_OK) {
-            String title = data.getStringExtra(AddMeetingActivity.EXTRA_TITLE);
-            String description = data.getStringExtra(AddMeetingActivity.EXTRA_DESCRIPTION);
-            String date = data.getStringExtra(AddMeetingActivity.EXTRA_DATE);
+            String title = data.getStringExtra(AddEditMeetingActivity.EXTRA_TITLE);
+            String description = data.getStringExtra(AddEditMeetingActivity.EXTRA_DESCRIPTION);
+            String date = data.getStringExtra(AddEditMeetingActivity.EXTRA_DATE);
 
             CreateNewMeeting createNewMeeting = new CreateNewMeeting(title, description, date);
             createMeetingViewModel.insert(createNewMeeting);
 
             Toast.makeText(this, "Meeting Logged", Toast.LENGTH_SHORT).show();
+        } else if (requestCode == EDIT_MEETING_REQUEST && resultCode == RESULT_OK){
+            int id = data.getIntExtra(AddEditMeetingActivity.EXTRA_ID, -1);
+
+            if (id == -1){
+                Toast.makeText(this, "Meeting Log Can't Be Updated", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String title = data.getStringExtra(AddEditMeetingActivity.EXTRA_TITLE);
+            String description = data.getStringExtra(AddEditMeetingActivity.EXTRA_DESCRIPTION);
+            String date = data.getStringExtra(AddEditMeetingActivity.EXTRA_DATE);
+
+            CreateNewMeeting createNewMeeting = new CreateNewMeeting(title, description, date);
+            createNewMeeting.setId(id);
+            createMeetingViewModel.update(createNewMeeting);
+
+            Toast.makeText(this, "Meeting Log Updated", Toast.LENGTH_SHORT).show();
+
         } else {
-            Toast.makeText(this, "Meeting Not Saved", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Meeting Log Not Updated", Toast.LENGTH_SHORT).show();
         }
     }
 
