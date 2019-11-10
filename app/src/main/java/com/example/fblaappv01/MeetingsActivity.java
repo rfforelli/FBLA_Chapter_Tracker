@@ -83,7 +83,7 @@ public class MeetingsActivity extends AppCompatActivity {
         createMeetingViewModel.getAllMeetings().observe(this, new Observer<List<CreateNewMeeting>>() {
             @Override
             public void onChanged(@Nullable List<CreateNewMeeting> createNewMeetings) {
-                adapter.setCreateNewMeetings(createNewMeetings);
+                adapter.submitList(createNewMeetings);
 
 
             }
