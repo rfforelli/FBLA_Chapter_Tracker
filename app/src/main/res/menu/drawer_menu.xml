@@ -20,10 +20,7 @@
             android:id="@+id/nav_events"
             android:icon="@drawable/ic_competitive_events"
             android:title="Competitve Events" />
-        <item
-            android:id="@+id/nav_meeting"
-            android:icon="@drawable/ic_track_meetings"
-            android:title="Chapter Meetings" />
+
     </group>
 
     <item android:title="Communication">
@@ -32,12 +29,23 @@
                 <item
                     android:id="@+id/nav_contact"
                     android:icon="@drawable/ic_contact_us"
-                    android:title="Contact Us" />
+                    android:title="Contact FBLA" />
             </group>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_share"
-                android:title="Share FBLA App" />
+                android:title="Share Chapter Tracker" />
+        </menu>
+    </item>
+
+    <item android:title="More">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_terms_service"
+                    android:icon="@drawable/ic_terms_of_service"
+                    android:title="Terms and Conditions" />
+            </group>
         </menu>
     </item>
 

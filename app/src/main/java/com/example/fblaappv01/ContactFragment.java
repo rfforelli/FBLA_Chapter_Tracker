@@ -7,12 +7,50 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 public class ContactFragment extends Fragment {
+
+    WebView webView;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        getActivity().setTitle("Contact Us");
-        return inflater.inflate(R.layout.fragment_contact, container, false); //write this to inflate our fragment layout
+
+        View v = inflater.inflate(R.layout.fragment_contact, container, false);
+
+
+
+
+        getActivity().setTitle("Contact FBLA");
+
+
+        webView = (WebView)v.findViewById(R.id.webView);
+
+
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setDisplayZoomControls(false);
+
+
+        WebSettings webSetting = webView.getSettings();
+        webSetting.setBuiltInZoomControls(true);
+        webSetting.setJavaScriptEnabled(true);
+
+
+
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("file:///android_asset/fbla_contact.html");
+        return v;
     }
+
+    private class WebViewClient extends android.webkit.WebViewClient
+    {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url)
+        {
+            return super.shouldOverrideUrlLoading(view, url);
+        }
+    }
+
+
 }

@@ -45,6 +45,9 @@ public class MeetingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_meetings);
         Log.d(TAG, "onCreate: starting."); //tags it, lets developer know what activity im in
+
+
+
         //setTitle("Add Note");
 
 
@@ -53,6 +56,9 @@ public class MeetingsActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
 
         setTitle("Chapter Meetings");
+
+
+
 
 
         //getActionBar().setHomeButtonEnabled(true);
@@ -74,6 +80,7 @@ public class MeetingsActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
+
 
 
         final MeetingAdapter adapter = new MeetingAdapter();
@@ -118,6 +125,7 @@ public class MeetingsActivity extends AppCompatActivity {
                 intent.putExtra(AddEditMeetingActivity.EXTRA_TITLE, createNewMeeting.getTitle());
                 intent.putExtra(AddEditMeetingActivity.EXTRA_DESCRIPTION, createNewMeeting.getDescription());
                 intent.putExtra(AddEditMeetingActivity.EXTRA_DATE, createNewMeeting.getDate());
+                intent.putExtra(AddEditMeetingActivity.EXTRA_ATTENDENCE, createNewMeeting.getAttendence());
                 startActivityForResult(intent, EDIT_MEETING_REQUEST);
 
 
@@ -136,8 +144,9 @@ public class MeetingsActivity extends AppCompatActivity {
             String title = data.getStringExtra(AddEditMeetingActivity.EXTRA_TITLE);
             String description = data.getStringExtra(AddEditMeetingActivity.EXTRA_DESCRIPTION);
             String date = data.getStringExtra(AddEditMeetingActivity.EXTRA_DATE);
+            int attendence = data.getIntExtra(AddEditMeetingActivity.EXTRA_ATTENDENCE, 1);
 
-            CreateNewMeeting createNewMeeting = new CreateNewMeeting(title, description, date);
+            CreateNewMeeting createNewMeeting = new CreateNewMeeting(title, description, date, attendence);
             createMeetingViewModel.insert(createNewMeeting);
 
             Toast toast = Toast.makeText(MeetingsActivity.this,"Meeting Logged", Toast.LENGTH_SHORT);
@@ -161,16 +170,17 @@ public class MeetingsActivity extends AppCompatActivity {
             String title = data.getStringExtra(AddEditMeetingActivity.EXTRA_TITLE);
             String description = data.getStringExtra(AddEditMeetingActivity.EXTRA_DESCRIPTION);
             String date = data.getStringExtra(AddEditMeetingActivity.EXTRA_DATE);
+            int attendence = data.getIntExtra(AddEditMeetingActivity.EXTRA_ATTENDENCE, 1);
 
-            CreateNewMeeting createNewMeeting = new CreateNewMeeting(title, description, date);
+            CreateNewMeeting createNewMeeting = new CreateNewMeeting(title, description, date, attendence);
             createNewMeeting.setId(id);
             createMeetingViewModel.update(createNewMeeting);
 
 
         } else {
             Toast toast = Toast.makeText(MeetingsActivity.this,"Meeting Log Not Updated", Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.BOTTOM, 0, 200);
-            toast.show();
+            //toast.setGravity(Gravity.BOTTOM, 0, 200);
+            //toast.show();
         }
     }
 

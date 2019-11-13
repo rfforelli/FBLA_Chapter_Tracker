@@ -2,6 +2,8 @@ package com.example.fblaappv01.Utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.util.Log;
@@ -17,29 +19,39 @@ public class BottomNavigationViewHelper {
     private static final String TAG = "BottomNavigationViewHel";
 
     public static void setUpBottomNavigationView(BottomNavigationViewEx bottomNavigationViewEx){
+
         Log.d(TAG, "setUpBottomNavigationView: Setting up BottomNavigationView");
         bottomNavigationViewEx.enableAnimation(true);
         bottomNavigationViewEx.enableItemShiftingMode(true);
         bottomNavigationViewEx.enableShiftingMode(false);
         bottomNavigationViewEx.setTextVisibility(false);
+        bottomNavigationViewEx.setIconSize(30, 30);
+        bottomNavigationViewEx.setIconTintList(0, ColorStateList.valueOf(Color.GRAY));
+        bottomNavigationViewEx.setIconTintList(1, ColorStateList.valueOf(Color.GRAY));
 
     }
 
     public static void enableNavigation(final Context context, BottomNavigationViewEx view){
 
+
         view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem)  {
+
+                //BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) menuItem;
 
 
 
                 switch (menuItem.getItemId()){
                     case R.id.ic_fbla_bottom_nav_icon:
+                        //bottomNavigationViewEx.setIconTintList(1, ColorStateList.valueOf(Color.RED));
                         Intent intent1 = new Intent(context, MainActivity.class); //ACTIVITY_NUM = 0
                         context.startActivity(intent1);
+
                         break;
 
                     case R.id.ic_icon_track_meetings:
+                        //bottomNavigationViewEx.setIconTintList(0, ColorStateList.valueOf(Color.RED));
                         Intent intent2 = new Intent(context, MeetingsActivity.class); //ACTIVITY_NUM = 1
                         context.startActivity(intent2);
                         break;

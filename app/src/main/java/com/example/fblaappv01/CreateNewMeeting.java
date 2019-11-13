@@ -17,10 +17,13 @@ public class CreateNewMeeting {
 
     private String date;
 
-    public CreateNewMeeting(String title, String description, String date) {
+    private int attendence;
+
+    public CreateNewMeeting(String title, String description, String date, int attendence) {
         this.title = title;
         this.description = description;
         this.date = date;
+        this.attendence = attendence;
     }
 
     public void setId(int id) {
@@ -41,5 +44,9 @@ public class CreateNewMeeting {
 
     public String getDate() {
         return date;
+    }
+
+    public int getAttendence() {
+        return attendence;
     }
 }

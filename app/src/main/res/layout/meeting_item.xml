@@ -34,8 +34,29 @@
             android:id="@+id/tex_view_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text_view_title"
-            android:text="Description"/>
+            android:layout_below="@id/text_view_attendence"
+            android:text="Description"
+            android:layout_marginLeft="58dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_view_attendence"
+            android:layout_below="@+id/text_view_title"
+            android:text="Attendence"
+            android:layout_marginLeft="78dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_view_atstarter"
+            android:layout_below="@+id/text_view_title"
+            android:text="Attendance:"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_view_atdescription"
+            android:layout_below="@+id/text_view_atstarter"
+            android:text="Minutes:"/>
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

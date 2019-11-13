@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Toast;
 
 public class AddEditMeetingActivity extends AppCompatActivity {
@@ -22,10 +23,13 @@ public class AddEditMeetingActivity extends AppCompatActivity {
             "com.example.fblaappv01.EXTRA_DESCRIPTION";
     public static final String EXTRA_DATE =
             "com.example.fblaappv01.EXTRA_DATE";
+    public static final String EXTRA_ATTENDENCE =
+            "com.example.fblaappv01.EXTRA_ATTENDENCE";
 
     private EditText editTextTitle;
     private EditText editTextDescription;
     private EditText editTextDate;
+    private NumberPicker numberPickerAttendence;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,11 +67,19 @@ public class AddEditMeetingActivity extends AppCompatActivity {
         editTextTitle = findViewById(R.id.edit_text_title);
         editTextDescription = findViewById(R.id.edit_text_description);
         editTextDate = findViewById(R.id.edit_text_date);
+        numberPickerAttendence = findViewById(R.id.number_picker_attendence);
+
+
+        numberPickerAttendence.setMinValue(1);
+        numberPickerAttendence.setMaxValue(100);
+
+
         if (intent.hasExtra(EXTRA_ID)) {
             setTitle("Edit Meeting Log");
             editTextTitle.setText(intent.getStringExtra(EXTRA_TITLE));
             editTextDescription.setText(intent.getStringExtra(EXTRA_DESCRIPTION));
             editTextDate.setText(intent.getStringExtra(EXTRA_DATE));
+            numberPickerAttendence.setValue(intent.getIntExtra(EXTRA_ATTENDENCE, 1));
         } else{
             setTitle("Log New Chapter Meeting");
         }
@@ -91,34 +103,12 @@ public class AddEditMeetingActivity extends AppCompatActivity {
         }
 
 
-
-
-
-
-        //ActionBar actionBar = getActionBar();
-
-        // show the action bar title
-        //actionBar.setDisplayShowTitleEnabled(true);
-
-        //getActionBar().setHomeAsUpIndicator(R.drawable.ic_close_black_24dp);
-
-
-        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_black_24dp);
-        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_black_24dp);
-        //getActionBar().setTitle("Add Note");
-
-        //((AppCompatActivity)getApplicationContext()).getSupportActionBar().setSubtitle(R.drawable.ic_close_black_24dp);
-
-        // getActionBar()
-        //setTitle("Add Note");
-        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_black_24dp);
-        //getActionBar().setHomeAsUpIndicator(R.drawable.ic_close_black_24dp);
-
     }
     private void saveMeeting() {
         String title = editTextTitle.getText().toString();
         String description = editTextDescription.getText().toString();
         String date = editTextDate.getText().toString();
+        int attendence = numberPickerAttendence.getValue();
 
         if (title.trim().isEmpty() || description.trim().isEmpty()) {
             Toast.makeText(this, "Please insert a title and description", Toast.LENGTH_SHORT).show();
@@ -129,6 +119,7 @@ public class AddEditMeetingActivity extends AppCompatActivity {
         data.putExtra(EXTRA_TITLE, title);
         data.putExtra(EXTRA_DESCRIPTION, description);
         data.putExtra(EXTRA_DATE, date);
+        data.putExtra(EXTRA_ATTENDENCE, attendence);
 
         int id = getIntent().getIntExtra(EXTRA_ID, -1);
         if (id != -1){

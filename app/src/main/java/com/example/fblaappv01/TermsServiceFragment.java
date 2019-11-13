@@ -10,19 +10,19 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-public class AboutFragment extends Fragment {
+public class TermsServiceFragment extends Fragment {
 
     WebView webView;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_about, container, false);
+        View v = inflater.inflate(R.layout.fragment_terms_service, container, false);
 
 
 
 
-        getActivity().setTitle("About FBLA");
+        getActivity().setTitle("Terms and Conditions");
 
 
         webView = (WebView)v.findViewById(R.id.webView);

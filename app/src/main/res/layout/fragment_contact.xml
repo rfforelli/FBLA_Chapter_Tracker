@@ -3,20 +3,15 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@android:color/background_light">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="231dp"
-        android:layout_marginBottom="640dp"
-        android:text="Contact"
-        android:textAlignment="center"
-        android:textSize="30sp" />
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </WebView>
+
+
+
 
 
 </RelativeLayout>

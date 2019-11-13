@@ -15,6 +15,7 @@ public class MeetingAdapter extends ListAdapter<CreateNewMeeting, MeetingAdapter
     private OnitemClickListener listener;
 
     public MeetingAdapter() {
+
         super(DIFF_CALLBACK);
     }
 
@@ -26,7 +27,7 @@ public class MeetingAdapter extends ListAdapter<CreateNewMeeting, MeetingAdapter
 
         @Override
         public boolean areContentsTheSame(@NonNull CreateNewMeeting oldItem, @NonNull CreateNewMeeting newItem) {
-            return oldItem.getTitle().equals(newItem.getTitle()) && oldItem.getDescription().equals(newItem.getDescription()) && oldItem.getDate().equals(newItem.getDate());
+            return oldItem.getTitle().equals(newItem.getTitle()) && oldItem.getDescription().equals(newItem.getDescription()) && oldItem.getDate().equals(newItem.getDate()) && oldItem.getAttendence() == newItem.getAttendence();
         }
     };
 
@@ -44,6 +45,7 @@ public class MeetingAdapter extends ListAdapter<CreateNewMeeting, MeetingAdapter
         meetingHolder.textViewTitle.setText(currentMeeting.getTitle());
         meetingHolder.textViewDescription.setText(currentMeeting.getDescription());
         meetingHolder.textViewDate.setText(currentMeeting.getDate());
+        meetingHolder.textViewAttendence.setText(String.valueOf(currentMeeting.getAttendence()));
 
     }
 
@@ -57,6 +59,7 @@ public class MeetingAdapter extends ListAdapter<CreateNewMeeting, MeetingAdapter
         private TextView textViewTitle;
         private TextView textViewDescription;
         private TextView textViewDate;
+        private TextView textViewAttendence;
 
 
         public MeetingHolder(@NonNull View itemView) {
@@ -64,6 +67,7 @@ public class MeetingAdapter extends ListAdapter<CreateNewMeeting, MeetingAdapter
             textViewTitle = itemView.findViewById(R.id.text_view_title);
             textViewDescription = itemView.findViewById(R.id.tex_view_description);
             textViewDate = itemView.findViewById(R.id.tex_view_date);
+            textViewAttendence = itemView.findViewById(R.id.text_view_attendence);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -41,9 +41,9 @@ public abstract class MeetingDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            meetingsDao.insert(new CreateNewMeeting("Title 1", "Description", "11/7/19"));
-            meetingsDao.insert(new CreateNewMeeting("Title 2", "Description1", "11/8/19"));
-            meetingsDao.insert(new CreateNewMeeting("Title 3", "Description2", "11/9/19"));
+
+
+
 
             return null;
         }
