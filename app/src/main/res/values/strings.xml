@@ -4,4 +4,6 @@
     <string name="nagivation_drawer_open">Open navigation drawer</string>
     <string name="nagivation_drawer_close">Close navigation drawer</string>
     <string name="email_underline_string"><u>Underlined text</u></string>
+    <string name="startchapter"> <a href="Start and FBLA Chapter To"> https://www.fbla-pbl.org/chapter-organization-packet/ </a></string>
+    <string name="my_text"><u>chaptertrackerfbla@gmail.com</u></string>
 </resources>

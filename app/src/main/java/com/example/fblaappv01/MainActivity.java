@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         // to tell our app that we want to use our toolbar as our actionbar, because we removed the default actionbar
         Toolbar toolbar = findViewById(R.id.toolbar); //creates a toolbar variable that is linked to the toolbar we created
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Log.d(TAG, "onCreate: starting."); //tags it, lets developer know what activity im in
 
         //LinearLayout r1 = (LinearLayout) findViewById(R.id.r1);
+
 
 
         setupBottomNavigationView();
@@ -91,8 +93,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //intent.putExtra(Intent.EXTRA_SUBJECT, "subject");
                 //intent.putExtra(Intent.EXTRA_TEXT, "mail body");
                 //startActivity(Intent.createChooser(intent, ""));
+        //RelativeLayout item = (RelativeLayout)findViewById(R.id.emailus1);
+        //View child = getLayoutInflater().inflate(R.layout.nav_header, null);
+        //item.addView(child);
 
+        //View view;
+        //LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        //view = inflater.inflate(R.layout.nav_header, null);
 
+        //TextView txt = (TextView) findViewById(R.id.emailus1);
+        //txt.setPaintFlags(txt.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
 
     }
@@ -148,6 +158,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_terms_service: //define what we want to do when we click this item
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new com.example.fblaappv01.TermsServiceFragment()).commit(); //takes care of placing our fragment in the fragment container frame layout
                 break;
+            case R.id.nav_faq: //define what we want to do when we click this item
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new com.example.fblaappv01.FAQFragment()).commit(); //takes care of placing our fragment in the fragment container frame layout
+                break;
             case R.id.nav_share:
                 Toast.makeText(this, "Share FBLA Chapter Tracker", Toast.LENGTH_SHORT).show(); //this si to simply see that we clicked this item, its the toast message
                 try { //try/catch block to prompt the user to share the app
@@ -165,6 +178,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 

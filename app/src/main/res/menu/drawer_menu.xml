@@ -13,13 +13,17 @@
             android:icon="@drawable/ic_fbla_news"
             android:title="FBLA News" />
         <item
-            android:id="@+id/nav_calender"
-            android:icon="@drawable/ic_calender"
-            android:title="Calender" />
-        <item
             android:id="@+id/nav_events"
             android:icon="@drawable/ic_competitive_events"
             android:title="Competitve Events" />
+        <item
+            android:id="@+id/nav_calender"
+            android:icon="@drawable/ic_calender"
+            android:title="Calendar of Events" />
+        <item
+            android:id="@+id/nav_faq"
+            android:icon="@drawable/ic_faq_icon"
+            android:title="FBLA FAQ" />
 
     </group>
 

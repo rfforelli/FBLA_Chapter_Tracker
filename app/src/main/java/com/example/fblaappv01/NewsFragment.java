@@ -40,7 +40,7 @@ public class NewsFragment extends Fragment {
             webView.getSettings().setJavaScriptEnabled(true); //enables javascript
             webView.restoreState(savedInstanceState);
             webView.setWebViewClient((new WebViewClient())); //creates a new WebViewCLient in order to allow the link to open in the app
-            webView.loadUrl("https://news.google.com/search?q=fbla&hl=en-US&gl=US&ceid=US%3Aen"); //Loads the url in the quotation marks
+            webView.loadUrl("https://news.google.com/search?q=FBLA&hl=en-US&gl=US&ceid=US%3Aen"); //Loads the url in the quotation marks
             return v;
         }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="186dp"
     android:background="@color/colorAccent"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
@@ -44,8 +44,6 @@
         android:id="@+id/emailus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="18dp"
@@ -66,10 +64,43 @@
         android:layout_marginStart="18dp"
         android:layout_marginTop="130dp"
         android:linksClickable="true"
-        android:text="chaptertrackerfbla@gmail.com"
+        android:text="@string/my_text"
         android:textColor="#54ACE6"
         android:textSize="13dp"
         />
+
+
+
+    <TextView
+        android:id="@+id/emailus2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="156dp"
+        android:linksClickable="true"
+        android:text="@string/startchapter"
+        android:textColor="@color/colorAccent"
+        android:textSize="13dp"
+        android:clickable="true"
+        android:autoLink="web" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/startChapterBtn1"
+        android:src="@drawable/ic_startchapter"
+        android:layout_marginTop="145dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginLeft="10dp"/>
+
+
+
+
+
+
+
 
 
 </RelativeLayout>

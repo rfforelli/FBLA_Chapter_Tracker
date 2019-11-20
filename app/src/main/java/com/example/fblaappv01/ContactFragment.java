@@ -39,7 +39,7 @@ public class ContactFragment extends Fragment {
 
 
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("file:///android_asset/fbla_contact.html");
+        webView.loadUrl("file:///android_asset/fbla_contact_updated.html");
         return v;
     }
 
