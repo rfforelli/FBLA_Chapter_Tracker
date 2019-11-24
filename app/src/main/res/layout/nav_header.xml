@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/r1"
     android:layout_width="match_parent"
     android:layout_height="186dp"
     android:background="@color/colorAccent"
+    android:clipChildren="false"
     android:orientation="vertical"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    android:id="@+id/r1"
-    android:clipChildren="false">
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <android.support.v7.widget.AppCompatImageView
         android:layout_width="wrap_content"
@@ -48,12 +48,12 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="18dp"
         android:layout_marginTop="130dp"
+        android:autoLink="email"
+        android:clickable="true"
         android:linksClickable="true"
         android:text="chaptertrackerfbla@gmail.com"
         android:textColor="#54ACE6"
-        android:textSize="13dp"
-        android:clickable="true"
-        android:autoLink="email"/>
+        android:textSize="13dp" />
 
     <TextView
         android:id="@+id/emailus1"
@@ -66,9 +66,7 @@
         android:linksClickable="true"
         android:text="@string/my_text"
         android:textColor="#54ACE6"
-        android:textSize="13dp"
-        />
-
+        android:textSize="13dp" />
 
 
     <TextView
@@ -79,28 +77,21 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="25dp"
         android:layout_marginTop="156dp"
+        android:autoLink="web"
+        android:clickable="true"
         android:linksClickable="true"
         android:text="@string/startchapter"
         android:textColor="@color/colorAccent"
-        android:textSize="13dp"
-        android:clickable="true"
-        android:autoLink="web" />
+        android:textSize="13dp" />
 
     <ImageView
+        android:id="@+id/startChapterBtn1"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:id="@+id/startChapterBtn1"
-        android:src="@drawable/ic_startchapter"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="145dp"
         android:layout_marginRight="80dp"
-        android:layout_marginLeft="10dp"/>
-
-
-
-
-
-
-
+        android:src="@drawable/ic_startchapter" />
 
 
 </RelativeLayout>

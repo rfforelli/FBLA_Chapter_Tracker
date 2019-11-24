@@ -48,7 +48,7 @@
                 <item
                     android:id="@+id/nav_terms_service"
                     android:icon="@drawable/ic_terms_of_service"
-                    android:title="Terms and Conditions" />
+                    android:title="Terms of Use" />
             </group>
         </menu>
     </item>

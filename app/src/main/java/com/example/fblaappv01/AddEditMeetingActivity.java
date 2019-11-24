@@ -37,31 +37,12 @@ public class AddEditMeetingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_meeting);
 
-
-        //ActionBar actionBar = getActionBar();
-        //getActionBar().show();
-
-        //setTitle("My new title");
-        //getActionBar().setIcon(R.drawable.ic_add_black_24dp);
-
         Toolbar toolbar = findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
 
 
         Intent intent = getIntent();
-
-
-
-
-        //getActionBar().setHomeAsUpIndicator(R.drawable.ic_close_black_24dp);
-        //getSupportActionBar().setTitle(Html.fromHtml("<font color='"+white+"'>"+"Home"+"</font>"));
-        //Html.fromHtml("<![CDATA[<font color='#FFFFFF'>text</font>]]>");
-        //getSupportActionBar().setTitle(Html.fromHtml("<font color=\"colorwhite\">" + "Add Note" + "</font>"));
-        //int orange = getResources().getColor(R.color.colorWhite);
-        //String htmlColor = String.format(Locale.US, "#%06X", (0xFFFFFF & Color.argb(0, Color.red(orange), Color.green(orange), Color.blue(orange))));
-
-
 
 
         editTextTitle = findViewById(R.id.edit_text_title);
@@ -80,15 +61,9 @@ public class AddEditMeetingActivity extends AppCompatActivity {
             editTextDescription.setText(intent.getStringExtra(EXTRA_DESCRIPTION));
             editTextDate.setText(intent.getStringExtra(EXTRA_DATE));
             numberPickerAttendence.setValue(intent.getIntExtra(EXTRA_ATTENDENCE, 1));
-        } else{
+        } else {
             setTitle("Log New Chapter Meeting");
         }
-
-
-        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_black_24dp);
-
-        //toolbar.setNavigationIcon(R.drawable.ic_close_black_24dp);
-
         Toolbar toolbar1 = (Toolbar) findViewById(R.id.toolbar1);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -102,8 +77,8 @@ public class AddEditMeetingActivity extends AppCompatActivity {
             });
         }
 
-
     }
+
     private void saveMeeting() {
         String title = editTextTitle.getText().toString();
         String description = editTextDescription.getText().toString();
@@ -122,7 +97,7 @@ public class AddEditMeetingActivity extends AppCompatActivity {
         data.putExtra(EXTRA_ATTENDENCE, attendence);
 
         int id = getIntent().getIntExtra(EXTRA_ID, -1);
-        if (id != -1){
+        if (id != -1) {
             data.putExtra(EXTRA_ID, id);
         }
 

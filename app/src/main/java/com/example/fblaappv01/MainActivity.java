@@ -24,7 +24,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String TAG = "MainActivity"; //for organizing logs
+    private static final String TAG = "MainActivity"; //log
     private static final int ACTIVITY_NUM = 0;
 
     private Context mContext = MainActivity.this;
@@ -33,23 +33,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
 
 
-    //private WebView webView; //sets up a private webview variable
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
 
 
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        // to tell our app that we want to use our toolbar as our actionbar, because we removed the default actionbar
-        Toolbar toolbar = findViewById(R.id.toolbar); //creates a toolbar variable that is linked to the toolbar we created
-        setSupportActionBar(toolbar); //sets our toobar as our actionbar
-        Log.d(TAG, "onCreate: starting."); //tags it, lets developer know what activity im in
-
-        //LinearLayout r1 = (LinearLayout) findViewById(R.id.r1);
-
+        // use custom toolber as the actionbar
+        Toolbar toolbar = findViewById(R.id.toolbar); //creates a toolbar variable that is linked to the toolbar created
+        setSupportActionBar(toolbar); //sets the toolbar as the actionbar
+        Log.d(TAG, "onCreate: starting."); //sets tag
 
 
         setupBottomNavigationView();
@@ -58,16 +53,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //TextView textView = (TextView) findViewById(R.id.emailus1);
-        //textView.setText(R.string.email_underline_string);
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.nagivation_drawer_open, R.string.nagivation_drawer_close);
         //creating a new actionbardrawertoggle named toggle, with the context as "this", passing the variable "drawer" and "toolbar" becuase these are the two vairbales that will be connected and synchronized
         //then we pass the two string resources we created
         drawer.addDrawerListener(toggle); //then we take our drawer variable and call a drawer listener and pass this toggle variable
         toggle.syncState(); //then we call syncstate to take care of rotating our hamburger icon to get rid of the drawer itself
 
-        if (android.os.Build.VERSION.SDK_INT >= 21){
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -75,41 +67,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
 
-
-
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsFragment()).commit(); //paste herre so that when we start our activity we open our message fragment immediately
             navigationView.setCheckedItem(R.id.nav_news);
-    }
-
-        //FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        //fragmentTransaction.add(R.id.fragment_container, new MeetingsFragment());
-        //fragmentTransaction.commit();
-
-
-        //Intent intent = new Intent(Intent.ACTION_SEND);
-                //intent.setType("text/plain"); // send email as plain text
-                //intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "some@email.address" });
-        //intent.putExtra(Intent.EXTRA_SUBJECT, "subject");
-                //intent.putExtra(Intent.EXTRA_TEXT, "mail body");
-                //startActivity(Intent.createChooser(intent, ""));
-        //RelativeLayout item = (RelativeLayout)findViewById(R.id.emailus1);
-        //View child = getLayoutInflater().inflate(R.layout.nav_header, null);
-        //item.addView(child);
-
-        //View view;
-        //LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        //view = inflater.inflate(R.layout.nav_header, null);
-
-        //TextView txt = (TextView) findViewById(R.id.emailus1);
-        //txt.setPaintFlags(txt.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        }
 
 
     }
 
 
-
-    private void setupBottomNavigationView(){
+    private void setupBottomNavigationView() {
 
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView"); //so in the log we know the code has made it this far and wont crash
         BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
@@ -121,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }
-
 
 
     @Override
@@ -182,9 +148,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-
-
-
 }
-
-

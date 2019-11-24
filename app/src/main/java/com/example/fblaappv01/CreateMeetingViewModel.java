@@ -17,7 +17,7 @@ public class CreateMeetingViewModel extends AndroidViewModel {
         allMeetings = repository.getAllMeetings();
     }
 
-    public void insert(CreateNewMeeting createNewMeeting){
+    public void insert(CreateNewMeeting createNewMeeting) {
 
         repository.insert(createNewMeeting);
     }
@@ -26,7 +26,7 @@ public class CreateMeetingViewModel extends AndroidViewModel {
         repository.update(createNewMeeting);
     }
 
-    public void delete(CreateNewMeeting createNewMeeting){
+    public void delete(CreateNewMeeting createNewMeeting) {
         repository.delete(createNewMeeting);
     }
 

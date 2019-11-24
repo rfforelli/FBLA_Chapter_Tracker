@@ -47,7 +47,6 @@ public class MeetingsActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: starting."); //tags it, lets developer know what activity im in
 
 
-
         //setTitle("Add Note");
 
 
@@ -56,9 +55,6 @@ public class MeetingsActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
 
         setTitle("Chapter Meetings");
-
-
-
 
 
         //getActionBar().setHomeButtonEnabled(true);
@@ -80,7 +76,6 @@ public class MeetingsActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-
 
 
         final MeetingAdapter adapter = new MeetingAdapter();
@@ -149,7 +144,7 @@ public class MeetingsActivity extends AppCompatActivity {
             CreateNewMeeting createNewMeeting = new CreateNewMeeting(title, description, date, attendence);
             createMeetingViewModel.insert(createNewMeeting);
 
-            Toast toast = Toast.makeText(MeetingsActivity.this,"Meeting Logged", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(MeetingsActivity.this, "Meeting Logged", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.BOTTOM, 0, 200);
             toast.show();
 
@@ -157,13 +152,13 @@ public class MeetingsActivity extends AppCompatActivity {
             int id = data.getIntExtra(AddEditMeetingActivity.EXTRA_ID, -1);
 
             if (id == -1) {
-                Toast toast = Toast.makeText(MeetingsActivity.this,"Meeting Log Can't Be Updated", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(MeetingsActivity.this, "Meeting Log Can't Be Updated", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.BOTTOM, 0, 200);
                 toast.show();
                 return;
             }
 
-            Toast toast = Toast.makeText(MeetingsActivity.this,"Meeting Log Updated", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(MeetingsActivity.this, "Meeting Log Updated", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.BOTTOM, 0, 200);
             toast.show();
 
@@ -178,7 +173,7 @@ public class MeetingsActivity extends AppCompatActivity {
 
 
         } else {
-            Toast toast = Toast.makeText(MeetingsActivity.this,"Meeting Log Not Updated", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(MeetingsActivity.this, "Meeting Log Not Updated", Toast.LENGTH_SHORT);
             //toast.setGravity(Gravity.BOTTOM, 0, 200);
             //toast.show();
         }

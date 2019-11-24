@@ -11,29 +11,31 @@ public class MeetingRepository {
     private MeetingsDao meetingsDao;
     private LiveData<List<CreateNewMeeting>> allMeetings;
 
-    public MeetingRepository(Application application){
+    public MeetingRepository(Application application) {
         MeetingDatabase database = MeetingDatabase.getInstance(application);
         meetingsDao = database.meetingsDao();
         allMeetings = meetingsDao.getAllMeetings();
     }
 
-    public void insert(CreateNewMeeting createNewMeeting){
+    public void insert(CreateNewMeeting createNewMeeting) {
 
         new InsertMeetingAsyncTask(meetingsDao).execute(createNewMeeting);
 
     }
 
-    public void update(CreateNewMeeting createNewMeeting){
+    public void update(CreateNewMeeting createNewMeeting) {
 
         new UpdateMeetingAsyncTask(meetingsDao).execute(createNewMeeting);
 
     }
-    public void delete(CreateNewMeeting createNewMeeting){
+
+    public void delete(CreateNewMeeting createNewMeeting) {
 
         new DeleteMeetingAsyncTask(meetingsDao).execute(createNewMeeting);
 
     }
-    public void deleteAllMeetings(){
+
+    public void deleteAllMeetings() {
         new DeleteAllMeetingsAsyncTask(meetingsDao).execute();
 
     }
@@ -45,7 +47,7 @@ public class MeetingRepository {
     private static class InsertMeetingAsyncTask extends AsyncTask<CreateNewMeeting, Void, Void> {
         private MeetingsDao meetingsDao;
 
-        private InsertMeetingAsyncTask(MeetingsDao meetingsDao){
+        private InsertMeetingAsyncTask(MeetingsDao meetingsDao) {
 
             this.meetingsDao = meetingsDao;
         }
@@ -61,7 +63,7 @@ public class MeetingRepository {
     private static class UpdateMeetingAsyncTask extends AsyncTask<CreateNewMeeting, Void, Void> {
         private MeetingsDao meetingsDao;
 
-        private UpdateMeetingAsyncTask(MeetingsDao meetingsDao){
+        private UpdateMeetingAsyncTask(MeetingsDao meetingsDao) {
 
             this.meetingsDao = meetingsDao;
         }
@@ -77,7 +79,7 @@ public class MeetingRepository {
     private static class DeleteMeetingAsyncTask extends AsyncTask<CreateNewMeeting, Void, Void> {
         private MeetingsDao meetingsDao;
 
-        private DeleteMeetingAsyncTask(MeetingsDao meetingsDao){
+        private DeleteMeetingAsyncTask(MeetingsDao meetingsDao) {
 
             this.meetingsDao = meetingsDao;
         }
@@ -93,7 +95,7 @@ public class MeetingRepository {
     private static class DeleteAllMeetingsAsyncTask extends AsyncTask<Void, Void, Void> {
         private MeetingsDao meetingsDao;
 
-        private DeleteAllMeetingsAsyncTask(MeetingsDao meetingsDao){
+        private DeleteAllMeetingsAsyncTask(MeetingsDao meetingsDao) {
 
             this.meetingsDao = meetingsDao;
         }

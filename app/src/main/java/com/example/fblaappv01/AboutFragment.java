@@ -13,6 +13,7 @@ import android.webkit.WebView;
 public class AboutFragment extends Fragment {
 
     WebView webView;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -20,32 +21,24 @@ public class AboutFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_about, container, false);
 
 
-
-
         getActivity().setTitle("About FBLA");
 
 
-        webView = (WebView)v.findViewById(R.id.webView);
-
+        webView = (WebView) v.findViewById(R.id.webView);
 
 
         WebSettings webSetting = webView.getSettings();
-        webSetting.setBuiltInZoomControls(true);
-        webSetting.setJavaScriptEnabled(true);
 
-        webView.getSettings().setBuiltInZoomControls(true);
-        webView.getSettings().setDisplayZoomControls(false);
+        webSetting.setJavaScriptEnabled(true);
 
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl("file:///android_asset/fbla_about_updated.html");
         return v;
     }
 
-    private class WebViewClient extends android.webkit.WebViewClient
-    {
+    private class WebViewClient extends android.webkit.WebViewClient {
         @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url)
-        {
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
             return super.shouldOverrideUrlLoading(view, url);
         }
     }

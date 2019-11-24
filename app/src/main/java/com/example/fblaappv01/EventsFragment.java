@@ -13,6 +13,7 @@ import android.webkit.WebView;
 public class EventsFragment extends Fragment {
 
     WebView webView;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -20,20 +21,14 @@ public class EventsFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_events, container, false);
 
 
-
-
         getActivity().setTitle("Competitive Events");
 
 
-        webView = (WebView)v.findViewById(R.id.webView);
+        webView = (WebView) v.findViewById(R.id.webView);
 
-        webView.getSettings().setBuiltInZoomControls(true);
-        webView.getSettings().setDisplayZoomControls(false);
 
         WebSettings webSetting = webView.getSettings();
-        webSetting.setBuiltInZoomControls(true);
         webSetting.setJavaScriptEnabled(true);
-
 
 
         webView.setWebViewClient(new WebViewClient());
@@ -41,11 +36,9 @@ public class EventsFragment extends Fragment {
         return v;
     }
 
-    private class WebViewClient extends android.webkit.WebViewClient
-    {
+    private class WebViewClient extends android.webkit.WebViewClient {
         @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url)
-        {
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
             return super.shouldOverrideUrlLoading(view, url);
         }
     }

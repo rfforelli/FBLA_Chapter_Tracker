@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    >
+    tools:context=".MainActivity">
+
     <android.support.v4.widget.DrawerLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
         android:id="@+id/drawer_layout"
-        tools:openDrawer="start">
+        android:layout_width="match_parent"
 
+        android:layout_height="match_parent"
+        tools:openDrawer="start">
 
 
         <LinearLayout
@@ -27,8 +26,7 @@
                 android:background="@color/colorPrimary"
                 android:elevation="4dp"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                />
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
 
             <FrameLayout
@@ -40,21 +38,20 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
 
             <RelativeLayout
+                android:id="@+id/relLayout2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/relLayout2">
+                android:layout_height="match_parent">
                 <!--   this is the relative layout for the main activity layout (4)   -->
-                <include layout="@layout/layout_center_viewpager"/>
+                <include layout="@layout/layout_center_viewpager" />
 
 
             </RelativeLayout>
 
-            <include layout="@layout/layout_bottom_navigation_view"/>
+            <include layout="@layout/layout_bottom_navigation_view" />
             <!--   include the bottom nav bar we created in the overall coordinator layout   -->
 
 
@@ -69,11 +66,6 @@
             app:menu="@menu/drawer_menu" />
 
     </android.support.v4.widget.DrawerLayout>
-
-
-
-
-
 
 
     <!--  make coordinator layout (3) (I made drawer, to make sure it works with my app)  -->

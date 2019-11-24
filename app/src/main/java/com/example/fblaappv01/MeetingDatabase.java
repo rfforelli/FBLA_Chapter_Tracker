@@ -16,8 +16,8 @@ public abstract class MeetingDatabase extends RoomDatabase {
 
     public abstract MeetingsDao meetingsDao();
 
-    public static synchronized MeetingDatabase getInstance(Context context){
-        if (instance == null){
+    public static synchronized MeetingDatabase getInstance(Context context) {
+        if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(), MeetingDatabase.class, "meeting_database").fallbackToDestructiveMigration()
                     .addCallback(roomCallback).build(); //increments database version number, for each new entry
         }
@@ -32,17 +32,15 @@ public abstract class MeetingDatabase extends RoomDatabase {
         }
     };
 
-    private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void>{
+    private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         private MeetingsDao meetingsDao;
 
-        private PopulateDbAsyncTask(MeetingDatabase db){
+        private PopulateDbAsyncTask(MeetingDatabase db) {
             meetingsDao = db.meetingsDao();
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
-
-
 
 
             return null;
