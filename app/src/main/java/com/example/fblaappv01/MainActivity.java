@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new com.example.fblaappv01.FAQFragment()).commit(); //takes care of placing our fragment in the fragment container frame layout
                 break;
             case R.id.nav_share:
-                Toast.makeText(this, "Share FBLA Chapter Tracker", Toast.LENGTH_SHORT).show(); //this si to simply see that we clicked this item, its the toast message
+                Toast.makeText(this, "Share FBLA Chapter Tracker", Toast.LENGTH_SHORT).show(); //toast message to confirm the user has clicked the icon
                 try { //try/catch block to prompt the user to share the app
                     Intent shareIntent = new Intent(Intent.ACTION_SEND);
                     shareIntent.setType("text/plain");

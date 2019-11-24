@@ -4,14 +4,11 @@
     <item
         android:id="@+id/ic_fbla_bottom_nav_icon"
         android:icon="@drawable/ic_fbla_bottom_nav_icon"
-        android:title="fbla" />
+        android:title="@string/fbla" />
 
     <item
         android:id="@+id/ic_icon_track_meetings"
         android:icon="@drawable/ic_icon_track_meetings"
-        android:title="track">
-
-
-    </item>
+        android:title="@string/track_meetings"/>
 
 </menu>

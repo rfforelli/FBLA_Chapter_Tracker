@@ -68,5 +68,4 @@
     </android.support.v4.widget.DrawerLayout>
 
 
-    <!--  make coordinator layout (3) (I made drawer, to make sure it works with my app)  -->
 </android.support.design.widget.CoordinatorLayout>

@@ -22,7 +22,7 @@ public class TermsServiceFragment extends Fragment {
         getActivity().setTitle("Terms of Use");
 
         pdfView = (PDFView) v.findViewById(R.id.pdfView);
-        pdfView.fromAsset("terms_of_use.pdf").load();
+        pdfView.fromAsset("terms_of_use_updated.pdf").load();
 
         return v;
     }
