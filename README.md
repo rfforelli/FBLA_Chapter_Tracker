@@ -41,6 +41,6 @@ Programs used include:
 * Paint.net (for logo and icon design)
 * Microsft Word 2013 (for writing Terms of Use)
 # Sources
-As this is the first app I've ever created I used a few YouTube tutorials as well as Stack Overflow posts to assist in enabling some of the
+As this is the first app I've ever created, I used a few YouTube tutorials as well as Stack Overflow posts to assist in enabling some of the
 app's functionallity. No templates were used in the app's creation.
 
