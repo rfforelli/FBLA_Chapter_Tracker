@@ -60,3 +60,12 @@ Programs used include:
 * Microsft Word 2013 (for writing Terms of Use)
 # Sources
 As this is the first app I've ever created, I used a few YouTube tutorials as well as Stack Overflow posts to assist in enabling some of the app's functionallity. No templates were used in the app's creation other than external frameworks to allow the app to view PDFs, and to enable more customizability of the bottom navigation toolbar.
+
+Icons were sourced from the following websites:
+* https://www.fbla-pbl.org/
+* https://thenounproject.com/
+* https://icon-library.net/
+* https://www.hiclipart.com/
+* https://www.flaticon.com/
+* https://icons-for-free.com/
+* https://www.iconfinder.com/
