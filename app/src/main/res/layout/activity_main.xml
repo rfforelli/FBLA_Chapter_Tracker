@@ -14,6 +14,7 @@
         tools:openDrawer="start">
 
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -33,6 +34,7 @@
                 android:id="@+id/fragment_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+
 
         </LinearLayout>
 
@@ -54,8 +56,8 @@
             <include layout="@layout/layout_bottom_navigation_view" />
             <!--   include the bottom nav bar we created in the overall coordinator layout   -->
 
-
         </RelativeLayout>
+
 
         <android.support.design.widget.NavigationView
             android:id="@+id/nav_view"
@@ -63,9 +65,81 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             app:headerLayout="@layout/nav_header"
-            app:menu="@menu/drawer_menu" />
+            app:menu="@menu/drawer_menu" >
+
+
+
+                <android.support.design.widget.NavigationView
+                    android:layout_width="wrap_content"
+                    android:layout_height="75dp"
+
+                    app:headerLayout="@layout/nav_bottomheader"
+
+
+                    android:layout_marginTop="570dp"
+                    android:scrollbars="none"
+                    android:isScrollContainer="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Follow"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="#000"
+                        android:layout_marginTop="3dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FBLA!"
+                        android:layout_marginLeft="13dp"
+                        android:textColor="#000"
+                        android:layout_marginTop="22dp"/>
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:id="@+id/twitterIcon"
+                        android:src="@drawable/ic_twitter"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginLeft="70dp"/>
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:id="@+id/facebookIcon"
+                        android:src="@drawable/ic_facebook"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginLeft="120dp"/>
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:id="@+id/linkedInIcon"
+                        android:src="@drawable/ic_linkedin"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginLeft="170dp"/>
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:id="@+id/InstagramIcon"
+                        android:src="@drawable/ic_instagram_new"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginLeft="220dp"/>
+
+
+
+
+                </android.support.design.widget.NavigationView>
+
+
+
+
+        </android.support.design.widget.NavigationView>
+
+
+
+
+
 
     </android.support.v4.widget.DrawerLayout>
+
 
 
 </android.support.design.widget.CoordinatorLayout>

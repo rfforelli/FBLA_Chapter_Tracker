@@ -59,7 +59,7 @@
         android:layout_marginLeft="99dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="16dp"
-        android:text="Meeting Attendence"
+        android:text="Meeting Attendance"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     <NumberPicker

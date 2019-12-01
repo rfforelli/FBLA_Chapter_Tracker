@@ -34,11 +34,29 @@
                     android:id="@+id/nav_contact"
                     android:icon="@drawable/ic_contact_us"
                     android:title="Contact FBLA" />
+                <item
+                    android:id="@+id/nav_join"
+                    android:icon="@drawable/ic_join_fbla"
+                    android:title="Join FBLA" />
+                <item
+                    android:id="@+id/nav_signup"
+                    android:icon="@drawable/ic_signup"
+                    android:title="Competitive Event Sign-Up" />
             </group>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_share"
                 android:title="Share Chapter Tracker" />
+        </menu>
+    </item>
+    <item android:title="Local Chapter">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_local_chapter_team"
+                    android:icon="@drawable/ic_local_officer_team"
+                    android:title="Local Officer Team" />
+            </group>
         </menu>
     </item>
 
@@ -49,6 +67,14 @@
                     android:id="@+id/nav_terms_service"
                     android:icon="@drawable/ic_terms_of_service"
                     android:title="Terms of Use" />
+                <item
+                    android:id="@+id/nav_report_bug"
+                    android:icon="@drawable/ic_report_bug"
+                    android:title="Report a Bug" />
+                <item
+                    android:id="@+id/placeholder"
+                    android:title=" "/>
+
             </group>
         </menu>
     </item>

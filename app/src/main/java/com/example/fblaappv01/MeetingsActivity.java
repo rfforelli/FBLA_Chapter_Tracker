@@ -201,9 +201,9 @@ public class MeetingsActivity extends AppCompatActivity {
     }
 
     private void setupBottomNavigationView() {
-        Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView"); //so in the log we know the code has made it this far and wont crash
+        Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView"); //log, for debugging
         BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
-        BottomNavigationViewHelper.setUpBottomNavigationView(bottomNavigationViewEx); //references helper so i dont have to update the nav view settings in each activities
+        BottomNavigationViewHelper.setUpBottomNavigationView(bottomNavigationViewEx);
 
         BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx);
 

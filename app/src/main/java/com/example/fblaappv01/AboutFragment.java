@@ -18,13 +18,13 @@ public class AboutFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_about, container, false);
+        View v = inflater.inflate(R.layout.fragment_about, container, false); // Inflates the "fregment_about" layout file
 
 
         getActivity().setTitle("About FBLA");
 
 
-        webView = (WebView) v.findViewById(R.id.webView);
+        webView = (WebView) v.findViewById(R.id.webView); //find the webview in the layout file
 
 
         WebSettings webSetting = webView.getSettings();
@@ -32,7 +32,7 @@ public class AboutFragment extends Fragment {
         webSetting.setJavaScriptEnabled(true);
 
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("file:///android_asset/fbla_about_updated.html");
+        webView.loadUrl("file:///android_asset/fbla_about_updated.html"); //load this URL
         return v;
     }
 

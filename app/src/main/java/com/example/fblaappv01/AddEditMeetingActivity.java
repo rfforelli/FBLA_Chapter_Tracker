@@ -85,8 +85,8 @@ public class AddEditMeetingActivity extends AppCompatActivity {
         String date = editTextDate.getText().toString();
         int attendence = numberPickerAttendence.getValue();
 
-        if (title.trim().isEmpty() || description.trim().isEmpty()) {
-            Toast.makeText(this, "Please insert a title and description", Toast.LENGTH_SHORT).show();
+        if (title.trim().isEmpty() || date.trim().isEmpty()) {
+            Toast.makeText(this, "Please insert meeting type and date", Toast.LENGTH_SHORT).show();
             return;
         }
 

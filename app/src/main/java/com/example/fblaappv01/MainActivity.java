@@ -2,7 +2,10 @@ package com.example.fblaappv01;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,9 +16,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.fblaappv01.Utils.BottomNavigationViewHelper;
@@ -50,6 +55,51 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setupBottomNavigationView();
 
         drawer = findViewById(R.id.drawer_layout);
+
+
+        ImageView twitterView = (ImageView) findViewById(R.id.twitterIcon);
+        twitterView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://twitter.com/FBLA_National"));
+                startActivity(intent);
+            }
+        });
+        ImageView facebookView = (ImageView) findViewById(R.id.facebookIcon);
+        facebookView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("http://www.facebook.com/FutureBusinessLeaders"));
+                startActivity(intent);
+            }
+        });
+        ImageView linkedinView = (ImageView) findViewById(R.id.linkedInIcon);
+        linkedinView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://www.linkedin.com/company/future-business-leaders-america-phi-beta-lambda"));
+                startActivity(intent);
+            }
+        });
+
+        ImageView instagramView = (ImageView) findViewById(R.id.InstagramIcon);
+        instagramView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://instagram.com/fbla_pbl/"));
+                startActivity(intent);
+            }
+        });
+
+
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -107,25 +157,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (menuItem.getItemId()) {
 
             case R.id.nav_about: //define what we want to do when we click this item
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutFragment()).commit(); //takes care of placing our fragment in the fragment container frame layout
-                break;
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutFragment()).commit();
+                break; //in the case of "nav_about" set the suppport fragment manager and replace fragnment_container with nav_about
             case R.id.nav_news: //define what we want to do when we click this item
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsFragment()).commit(); //takes care of placing our fragment in the fragment container frame layout
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsFragment()).commit();
                 break;
             case R.id.nav_calender: //define what we want to do when we click this item
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalenderFragment()).commit(); //takes care of placing our fragment in the fragment container frame layout
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalenderFragment()).commit();
                 break;
             case R.id.nav_events: //define what we want to do when we click this item
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new EventsFragment()).commit(); //takes care of placing our fragment in the fragment container frame layout
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new EventsFragment()).commit();
                 break;
             case R.id.nav_contact: //define what we want to do when we click this item
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ContactFragment()).commit(); //takes care of placing our fragment in the fragment container frame layout
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ContactFragment()).commit();
                 break;
             case R.id.nav_terms_service: //define what we want to do when we click this item
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new com.example.fblaappv01.TermsServiceFragment()).commit(); //takes care of placing our fragment in the fragment container frame layout
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new com.example.fblaappv01.TermsServiceFragment()).commit();
                 break;
             case R.id.nav_faq: //define what we want to do when we click this item
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new com.example.fblaappv01.FAQFragment()).commit(); //takes care of placing our fragment in the fragment container frame layout
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new com.example.fblaappv01.FAQFragment()).commit();
+                break;
+            case R.id.nav_local_chapter_team: //define what we want to do when we click this item
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new com.example.fblaappv01.TeamFragment()).commit();
+                break;
+            case R.id.nav_join: //define what we want to do when we click this item
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new JoinFragment()).commit();
+                break;
+            case R.id.nav_report_bug: //define what we want to do when we click this item
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BugFragment()).commit();
+                break;
+            case R.id.nav_signup: //define what we want to do when we click this item
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SignUpFragment()).commit();
                 break;
             case R.id.nav_share:
                 Toast.makeText(this, "Share FBLA Chapter Tracker", Toast.LENGTH_SHORT).show(); //toast message to confirm the user has clicked the icon
@@ -138,7 +200,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
                     startActivity(Intent.createChooser(shareIntent, "Thanks for sharing!!!"));
                 } catch (Exception e) {
-                    //e.toString();
                 }
                 break;
         }
@@ -146,6 +207,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
 
         return true;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
 }

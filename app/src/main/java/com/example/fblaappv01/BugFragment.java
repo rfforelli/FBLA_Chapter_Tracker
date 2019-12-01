@@ -15,7 +15,7 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class NewsFragment extends Fragment {
+public class BugFragment extends Fragment {
     private WebView mWebView;
 
     @Nullable
@@ -23,24 +23,24 @@ public class NewsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 
-        getActivity().setTitle("FBLA News");
+        getActivity().setTitle("Report a Bug");
         ConnectivityManager connMgr = (ConnectivityManager) getActivity()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if (networkInfo != null && networkInfo.isConnected()/* && mWebView == null*/) {
-            View v = inflater.inflate(R.layout.fragment_news, container, false);
+            View v = inflater.inflate(R.layout.fragment_bug, container, false);
             ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
             imageView.setVisibility(View.INVISIBLE);
             WebView webView = (WebView) v.findViewById(R.id.webView);
             webView.getSettings().setJavaScriptEnabled(true); //enables javascript
             webView.restoreState(savedInstanceState);
             webView.setWebViewClient((new WebViewClient())); //creates a new WebViewCLient in order to allow the link to open in the app
-            webView.loadUrl("https://news.google.com/search?q=FBLA&hl=en-US&gl=US&ceid=US%3Aen"); //Loads the url in the quotation marks
+            webView.loadUrl("https://docs.google.com/forms/d/e/1FAIpQLSeJiVm5rAMDqqR5Vy_Yhk522m67NuPM2Z5JpnFKsCGw4lvNRg/viewform?usp=sf_link"); //Loads the url in the quotation marks
             return v;
         } else {
-            Toast.makeText(getActivity(), "Oops! You must be connected to the internet to get the latest FBLA news!", Toast.LENGTH_LONG).show();
-            View v = inflater.inflate(R.layout.fragment_news, container, true);
+            Toast.makeText(getActivity(), "Oops! You must be connected to the internet to access the bug reporting form!", Toast.LENGTH_LONG).show();
+            View v = inflater.inflate(R.layout.fragment_bug, container, true);
             ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
             imageView.setVisibility(View.VISIBLE);
 
