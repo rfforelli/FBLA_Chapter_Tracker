@@ -189,6 +189,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_signup: //define what we want to do when we click this item
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SignUpFragment()).commit();
                 break;
+            case R.id.nav_license: //define what we want to do when we click this item
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new LicenseFragment()).commit();
+                break;
             case R.id.nav_share:
                 Toast.makeText(this, "Share FBLA Chapter Tracker", Toast.LENGTH_SHORT).show(); //toast message to confirm the user has clicked the icon
                 try { //try/catch block to prompt the user to share the app

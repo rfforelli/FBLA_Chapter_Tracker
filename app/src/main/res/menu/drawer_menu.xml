@@ -68,6 +68,10 @@
                     android:icon="@drawable/ic_terms_of_service"
                     android:title="Terms of Use" />
                 <item
+                    android:id="@+id/nav_license"
+                    android:icon="@drawable/ic_license"
+                    android:title="Chapter Tracker License" />
+                <item
                     android:id="@+id/nav_report_bug"
                     android:icon="@drawable/ic_report_bug"
                     android:title="Report a Bug" />
