@@ -13,17 +13,18 @@
             android:icon="@drawable/ic_fbla_news"
             android:title="FBLA News" />
         <item
-            android:id="@+id/nav_calender"
-            android:icon="@drawable/ic_calender"
-            android:title="Calender" />
-        <item
             android:id="@+id/nav_events"
             android:icon="@drawable/ic_competitive_events"
             android:title="Competitve Events" />
         <item
-            android:id="@+id/nav_meeting"
-            android:icon="@drawable/ic_track_meetings"
-            android:title="Chapter Meetings" />
+            android:id="@+id/nav_calender"
+            android:icon="@drawable/ic_calender"
+            android:title="Calendar of Events" />
+        <item
+            android:id="@+id/nav_faq"
+            android:icon="@drawable/ic_faq_icon"
+            android:title="FBLA FAQ" />
+
     </group>
 
     <item android:title="Communication">
@@ -32,12 +33,53 @@
                 <item
                     android:id="@+id/nav_contact"
                     android:icon="@drawable/ic_contact_us"
-                    android:title="Contact Us" />
+                    android:title="Contact FBLA" />
+                <item
+                    android:id="@+id/nav_join"
+                    android:icon="@drawable/ic_join_fbla"
+                    android:title="Join FBLA" />
+                <item
+                    android:id="@+id/nav_signup"
+                    android:icon="@drawable/ic_signup"
+                    android:title="Competitive Event Sign-Up" />
             </group>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_share"
-                android:title="Share FBLA App" />
+                android:title="Share Chapter Tracker" />
+        </menu>
+    </item>
+    <item android:title="Local Chapter">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_local_chapter_team"
+                    android:icon="@drawable/ic_local_officer_team"
+                    android:title="Local Officer Team" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="More">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_terms_service"
+                    android:icon="@drawable/ic_terms_of_service"
+                    android:title="Terms of Use" />
+                <item
+                    android:id="@+id/nav_license"
+                    android:icon="@drawable/ic_license"
+                    android:title="Chapter Tracker License" />
+                <item
+                    android:id="@+id/nav_report_bug"
+                    android:icon="@drawable/ic_report_bug"
+                    android:title="Report a Bug" />
+                <item
+                    android:id="@+id/placeholder"
+                    android:title=" "/>
+
+            </group>
         </menu>
     </item>
 
