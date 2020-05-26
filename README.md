@@ -41,6 +41,7 @@ The app must be run on an Android device that meets the following requirments:
 * Runs Android 5.0 Lollipop or higher
 * Has Google Play Services installed
 * Internet Services are available
+
 To emulate the app with Android studio, the following requirements must be met:
 * The latest version of Android Studio is installed
 * The neccassary libraries are installed (libraries can implmented via Android Studio)
